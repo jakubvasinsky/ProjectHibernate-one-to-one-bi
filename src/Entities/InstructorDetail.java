@@ -16,7 +16,25 @@ private String youtubeChannel;
 @Column(name = "hobby")
 private String hobby;
 
-public InstructorDetail(){/*prazdny konstruktor*/}
+@OneToOne(mappedBy = "instructorDetail",
+        cascade = {CascadeType.DETACH, CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
+private Instructor instructor;
+
+
+
+
+
+
+
+    public Instructor getInstructor() {
+        return instructor;
+    }
+
+    public void setInstructor(Instructor instructor) {
+        this.instructor = instructor;
+    }
+
+    public InstructorDetail(){/*prazdny konstruktor*/}
 
     public InstructorDetail(String youtubeChannel, String hobby) {
         this.youtubeChannel = youtubeChannel;
